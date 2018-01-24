@@ -1,0 +1,17 @@
+<p>
+  charts works!
+</p>
+
+
+<select>
+  <option *ngFor="let item of select | async">
+    {{ item.key }}
+  </option>
+</select>
+
+
+<div>
+  <ul *ngFor="let item of select | async">
+    {{ item.payload |json }}
+  </ul>
+</div>
