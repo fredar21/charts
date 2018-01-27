@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 
 //Angular Fire
@@ -25,6 +27,8 @@ import { CreateChartComponent } from './components/create-chart/create-chart.com
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    Ng2GoogleChartsModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule

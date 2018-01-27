@@ -3,15 +3,22 @@
 </p>
 
 
-<select>
-  <option *ngFor="let item of select | async">
-    {{ item.key }}
+<select  [(ngModel)]="chartSelect" (change)=graficar(chartSelect)>
+  <option [ngValue]="undefined" disabled>Select an user</option>
+  <option *ngFor="let item of select | async" [ngValue]="item">
+    {{ item.key}}
   </option>
 </select>
 
 
 <div>
   <ul *ngFor="let item of select | async">
-    {{ item.payload |json }}
+    {{ item |json }}
   </ul>
 </div>
+
+<google-chart [data]="pieChartData"></google-chart>
+
+
+
+
