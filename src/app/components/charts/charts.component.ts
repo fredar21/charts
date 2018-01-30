@@ -14,6 +14,7 @@ export class ChartsComponent implements OnInit {
   constructor(private servicioFirebase: FirebaseService) {
 
     this.select= this.servicioFirebase.getChart();
+    
     this.pieChartData =  {
       chartType: 'ColumnChart',
       dataTable: [
@@ -35,9 +36,10 @@ export class ChartsComponent implements OnInit {
 
 
   graficar(data){
+
     this.select= this.servicioFirebase.getChart();
-   console.log(data);
-   this.guardar();
+   console.log(data.payload);
+   //this.guardar();
   }
 
   guardar(){

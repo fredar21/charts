@@ -6,14 +6,14 @@
 <select  [(ngModel)]="chartSelect" (change)=graficar(chartSelect)>
   <option [ngValue]="undefined" disabled>Select an user</option>
   <option *ngFor="let item of select | async" [ngValue]="item">
-    {{ item.key}}
+    {{ item.key }}
   </option>
 </select>
 
 
 <div>
   <ul *ngFor="let item of select | async">
-    {{ item |json }}
+    {{ item | json }}
   </ul>
 </div>
 

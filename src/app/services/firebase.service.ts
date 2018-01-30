@@ -1,31 +1,34 @@
 import { Injectable } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase,  AngularFireList } from 'angularfire2/database';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class FirebaseService {
 
-  items: AngularFireList<any>;
-  item: Observable<any[]>;
-  constructor(private db: AngularFireDatabase) {
+  items: Observable<any[]>;
+
+  constructor(private db: AngularFirestore) {
     console.log("servicio listo");
    
 }
 
 getChart(){
-  this.items = this.db.list('chart');
-  this.item = this.items.snapshotChanges().map(actions => {
+  this.items = this.db.collection('chart').snapshotChanges().map(actions => {
+    console.log(actions)
     return actions.map(snapshot => {
-      return [snapshot.payload];
+      return {
+        key: snapshot.payload.doc.ref.id,
+        data: snapshot.payload.doc.data()
+      };
     });
   });
-  console.log(this.item);
-  return this.item;
+  console.log(this.items);
+  return this.items;
 }
 
 saveChart(data){
-  this.items.push(data);
+  
+  return this.items.add(data);
 }
 
 }

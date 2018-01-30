@@ -7,7 +7,7 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 //Angular Fire
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 
 //Services
@@ -31,7 +31,7 @@ import { CreateChartComponent } from './components/create-chart/create-chart.com
     Ng2GoogleChartsModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFirestoreModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
